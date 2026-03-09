@@ -85,19 +85,32 @@ class YAKEExtractor:
         return cleaned
 
     def _simple_extract(self, text: str, n: int) -> List[str]:
-        """Fallback TF-based extractor when YAKE is unavailable."""
+    """Fallback TF-based extractor when YAKE is unavailable."""
+    
         stopwords = {
-            "the", "a", "an", "in", "of", "to", "and", "or", "is",
-            "are", "was", "were", "for", "on", "with", "that", "this",
-            "it", "as", "at", "be", "by", "from", "have", "has",
-            "we", "our", "their", "its", "also", "can", "may",
-        }
-        words = re.findall(r'\b[a-zA-Z]{4,}\b', text.lower())
-        freq: dict = {}
+        "the", "a", "an", "in", "of", "to", "and", "or", "is",
+        "are", "was", "were", "for", "on", "with", "that", "this",
+        "it", "as", "at", "be", "by", "from", "have", "has",
+        "we", "our", "their", "its", "also", "can", "may",
+    }
+
+        words = re.findall(r'\b[A-Za-z]{2,}\b', text)
+
+        freq = {}
+
         for w in words:
-            if w not in stopwords:
-                freq[w] = freq.get(w, 0) + 1
+            w_lower = w.lower()
+
+        # Rule 1: Keep ALL CAPS words
+            if w.isupper():
+                freq[w] = freq.get(w, 0) + 2   # boost importance
+
+        # Rule 2: Normal words
+            if w_lower not in stopwords and len(w) >= 4:
+                freq[w_lower] = freq.get(w_lower, 0) + 1
+
         sorted_words = sorted(freq, key=lambda x: freq[x], reverse=True)
+
         return sorted_words[:n]
 
 
