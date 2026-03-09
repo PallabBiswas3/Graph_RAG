@@ -53,9 +53,8 @@ class DocumentChunker:
         # 1 token ≈ 4 characters (rough heuristic)
         self._char_limit = chunk_size * 4
 
-    # ------------------------------------------------------------------
+    
     # Public API
-    # ------------------------------------------------------------------
 
     def chunk_document(
         self,

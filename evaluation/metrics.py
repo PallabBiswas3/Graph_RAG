@@ -1,6 +1,6 @@
 """
 metrics.py  —  RAG Evaluation Metrics
----------------------------------------
+
 Implements all evaluation dimensions described in the paper (Section 6.4):
 
 RETRIEVAL METRICS (Context Relevance):
@@ -22,9 +22,7 @@ import re
 from typing import List, Set, Optional, Dict
 
 
-# ---------------------------------------------------------------------------
 # Helper utilities
-# ---------------------------------------------------------------------------
 
 def _tokenize(text: str) -> List[str]:
     """Simple word tokenizer (lowercase, alphanumeric only)."""
@@ -35,10 +33,7 @@ def _token_set(text: str) -> Set[str]:
     return set(_tokenize(text))
 
 
-# ---------------------------------------------------------------------------
 # Retrieval Metrics
-# ---------------------------------------------------------------------------
-
 def recall_at_k(
     retrieved_uris: List[str],
     relevant_uris: Set[str],
@@ -125,10 +120,8 @@ def context_recall(
     return len(ref_tokens & ctx_tokens) / len(ref_tokens)
 
 
-# ---------------------------------------------------------------------------
-# Generation Metrics
-# ---------------------------------------------------------------------------
 
+# Generation Metrics
 def k_precision(answer: str, retrieved_chunks: List[dict]) -> float:
     """
     K-Precision: proportion of tokens in the generated answer that
@@ -199,9 +192,7 @@ def faithfulness_score(answer: str, retrieved_chunks: List[dict]) -> float:
     return faithful / max(len(sentences), 1)
 
 
-# ---------------------------------------------------------------------------
 # Aggregate Evaluation Runner
-# ---------------------------------------------------------------------------
 
 class RAGEvaluator:
     """

@@ -1,6 +1,6 @@
 """
 keyword_extractor.py
---------------------
+
 Wraps YAKE for fast, unsupervised keyword extraction (primary method).
 Also provides an LLM-based extractor for domain-specific keywords
 (alternative, as discussed in the paper Section 5.1 and 7.4).

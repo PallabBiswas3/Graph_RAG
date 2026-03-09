@@ -1,6 +1,6 @@
 """
 ikg.py  —  Information Knowledge Graph (Keyword Layer)
---------------------------------------------------------
+
 Implements the IKG as described in the paper (Section 5.1, Figure 4).
 
 Structure:
@@ -41,10 +41,8 @@ class InformationKnowledgeGraph:
         # uri → chunk data dict (text, doc, chapter, etc.)
         self._uri_to_data: Dict[str, dict] = {}
 
-    # ------------------------------------------------------------------
+    
     # Indexing
-    # ------------------------------------------------------------------
-
     def add_chunk(self, chunk: Chunk, keywords: List[str]) -> None:
         """
         Register a chunk and its keywords in the IKG.
@@ -86,9 +84,8 @@ class InformationKnowledgeGraph:
         print(f"[IKG] Indexed {len(chunks)} chunks with "
               f"{len(self._kw_to_uris)} unique keywords.")
 
-    # ------------------------------------------------------------------
+    
     # Retrieval helpers
-    # ------------------------------------------------------------------
 
     def get_keywords_for_chunk(self, uri: str) -> List[str]:
         """Return the keyword list stored for this chunk URI."""

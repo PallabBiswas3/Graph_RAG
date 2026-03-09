@@ -1,6 +1,6 @@
 """
 dkg.py  —  Document Knowledge Graph
--------------------------------------
+
 Builds a tree-structured graph that mirrors each document's hierarchy:
 
     Document
@@ -49,9 +49,8 @@ class DocumentKnowledgeGraph:
         self._chapter_to_chunks: Dict[str, List[str]] = {}  # chapter_key -> [uri]
         self._doc_metadata: Dict[str, dict]        = {}
 
-    # ------------------------------------------------------------------
+   
     # Indexing
-    # ------------------------------------------------------------------
 
     def add_document(
         self,
@@ -95,7 +94,7 @@ class DocumentKnowledgeGraph:
             else:
                 chap_node = chapter_nodes[chap_key]
 
-            # ---- Section node (optional) --------------------------------
+            #  Section node (optional) 
             if chunk.section:
                 sec_key = f"{doc_id}::{chunk.chapter}::{chunk.section}"
                 if sec_key not in section_nodes:
@@ -108,7 +107,7 @@ class DocumentKnowledgeGraph:
             else:
                 parent_node = chap_node
 
-            # ---- Chunk node --------------------------------------------
+            # Chunk node 
             chunk_node = f"chunk:{chunk.uri}"
             self.G.add_node(
                 chunk_node,
@@ -135,9 +134,8 @@ class DocumentKnowledgeGraph:
         print(f"[DKG] Indexed '{doc_title}': {len(chunks)} chunks, "
               f"{len(chapter_nodes)} chapters, {len(section_nodes)} sections.")
 
-    # ------------------------------------------------------------------
+    
     # Retrieval helpers
-    # ------------------------------------------------------------------
 
     def get_chapter_chunks(self, uri: str) -> List[dict]:
         """
@@ -181,9 +179,7 @@ class DocumentKnowledgeGraph:
             **type_counts,
         }
 
-    # ------------------------------------------------------------------
     # Private helpers
-    # ------------------------------------------------------------------
 
     def _find_chapter_ancestor(self, chunk_node: str) -> Optional[str]:
         """Walk predecessors until we find a chapter node."""
