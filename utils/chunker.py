@@ -91,10 +91,7 @@ class DocumentChunker:
 
         return chunks
 
-    # ------------------------------------------------------------------
-    # Internal helpers
-    # ------------------------------------------------------------------
-
+    
     def _split_into_sections(self, text: str):
         """
         Detect headings and split text into (chapter, section, body) tuples.
