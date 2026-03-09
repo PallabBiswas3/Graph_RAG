@@ -344,13 +344,13 @@ network.on('click', function(p) {{
 # ═══════════════════════════════════════════════════════════════════════
 with st.sidebar:
     st.markdown('<div class="main-header">GraphRAG</div>', unsafe_allow_html=True)
-    st.markdown('<div class="sub-header">// academic research assistant</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sub-header"> Academic Research Assistant</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="section-title">Document Source</div>', unsafe_allow_html=True)
 
-    source = st.radio("", ["📄 Upload PDFs", "🧪 Use Demo Papers"], label_visibility="collapsed")
+    source = st.radio("", [" Upload PDFs", " Use Demo Papers"], label_visibility="collapsed")
 
-    if source == "🧪 Use Demo Papers":
+    if source == " Use Demo Papers":
         if st.button("⚡ Load Demo Dataset", use_container_width=True):
             with st.spinner("Indexing 3 academic papers..."):
                 from demo import SAMPLE_DOCS
@@ -439,7 +439,7 @@ with st.sidebar:
 if not st.session_state.indexed_docs:
     # ── Welcome screen ───────────────────────────────────────────────
     st.markdown('<div class="main-header">Document GraphRAG</div>', unsafe_allow_html=True)
-    st.markdown('<div class="sub-header">// knowledge graph enhanced retrieval augmented generation · Knollmeyer et al. 2025</div>',
+    st.markdown('<div class="sub-header">Knowledge graph enhanced retrieval augmented generation · Knollmeyer et al. 2025</div>',
                 unsafe_allow_html=True)
 
     c1, c2, c3 = st.columns(3)
