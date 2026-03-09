@@ -38,10 +38,8 @@ class VectorStore:
         self._metadata: List[dict]        = []
         self._texts:    List[str]         = []
 
-    # ------------------------------------------------------------------
+    
     # Indexing
-    # ------------------------------------------------------------------
-
     def add_chunks(self, chunks) -> None:
         if not chunks:
             return
@@ -79,10 +77,9 @@ class VectorStore:
         print(f"[VectorStore:{self.collection_name}] Indexed {len(texts)} chunks "
               f"(total: {len(self._uris)}).")
 
-    # ------------------------------------------------------------------
+   
     # Retrieval
-    # ------------------------------------------------------------------
-
+   
     def search(self, query: str, k: int = 10) -> List[dict]:
         if not self._vectors:
             return []
@@ -111,9 +108,9 @@ class VectorStore:
     def count(self) -> int:
         return len(self._uris)
 
-    # ------------------------------------------------------------------
+    
     # Embedding  (priority: OpenAI → sentence-transformers → hash)
-    # ------------------------------------------------------------------
+   
 
     def _embed_batch(self, texts: List[str]) -> List[List[float]]:
         # 1. OpenAI (if client provided)

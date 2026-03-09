@@ -70,9 +70,9 @@ class LLMReranker:
         scored.sort(key=lambda x: x.get("rerank_score", 0), reverse=True)
         return scored[:top_k]
 
-    # ------------------------------------------------------------------
+
     # Semantic reranking via sentence-transformers (FREE, LOCAL)
-    # ------------------------------------------------------------------
+    
 
     def _semantic_rerank(self, chunks: List[dict], query: str) -> List[dict]:
         """
@@ -93,9 +93,9 @@ class LLMReranker:
 
         return chunks
 
-    # ------------------------------------------------------------------
+    
     # LLM reranking (OpenAI)
-    # ------------------------------------------------------------------
+    
 
     def _llm_rerank(self, chunks: List[dict], query: str) -> List[dict]:
         chunks_text = "\n\n".join(
@@ -142,10 +142,9 @@ class LLMReranker:
                 results[idx] = {"score": score, "reason": m.group(3).strip()}
         return [results.get(i, {"score": 5, "reason": "not scored"}) for i in range(n_chunks)]
 
-    # ------------------------------------------------------------------
+    
     # Keyword overlap fallback (last resort)
-    # ------------------------------------------------------------------
-
+    
     @staticmethod
     def _keyword_rerank(chunks: List[dict], query: str) -> List[dict]:
         query_words = set(re.findall(r'\b\w{3,}\b', query.lower()))

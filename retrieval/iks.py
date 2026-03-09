@@ -1,6 +1,6 @@
 """
 iks.py  —  Informed Keyword Search
--------------------------------------
+
 Retrieval Strategy 2 (Green path in Figure 5 of the paper).
 
 Algorithm:

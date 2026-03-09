@@ -1,6 +1,6 @@
 """
 ics.py  —  Informed Chapter Search
--------------------------------------
+
 Retrieval Strategy 1 (Blue path in Figure 5 of the paper).
 
 Algorithm:

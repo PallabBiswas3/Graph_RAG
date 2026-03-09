@@ -1,6 +1,6 @@
 """
 uks.py  —  Uninformed Keyword Search
-----------------------------------------
+
 Retrieval Strategy 3 (Orange path in Figure 5 of the paper).
 
 Algorithm:
